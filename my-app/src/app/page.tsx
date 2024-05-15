@@ -6,6 +6,7 @@ import { PlusCircledIcon, CameraIcon } from "@radix-ui/react-icons";
 import { Button } from "../components/ui/button";
 import { ScrollArea, ScrollBar } from "../components/ui/scroll-area";
 import { Separator } from "../components/ui/separator";
+import { Badge } from "@/components/ui/badge"
 import {
   Tabs,
   TabsContent,
@@ -280,7 +281,7 @@ export default function MusicPage() {
                           </p>
                         </div>
                       </div>
-                      <Separator className="my-4" />
+                      <Separator className="hidden" className="my-4" />
                       <div className="relative">
                         <ScrollArea>
                           <center>
@@ -296,7 +297,7 @@ export default function MusicPage() {
                             >
                               {listenNowAlbums.map((album) => (
                                 <>
-                                  <Drawer>
+                                  <Drawer snapPoints={[1]}>
                                     <DrawerTrigger asChild>
                                       <div style={{flexDirection: "row", alignItems: "center"}}>
                                       <AlbumArtwork
@@ -308,6 +309,7 @@ export default function MusicPage() {
                                         height={330}
                                         
                                       />
+                                      <Badge style={{marginTop: -200}} variant="outline">Badge</Badge>
                                       </div>
                                     </DrawerTrigger>
                                     <DrawerContent>
@@ -319,12 +321,15 @@ export default function MusicPage() {
                                           </DrawerDescription>
                                         </DrawerHeader>
                                         <div className="p-4 pb-0">
-                                          <div className="flex items-center justify-center space-x-2">
-                                            <Image
+                                          <div style={{borderRadius: "1rem"}} className="flex items-center justify-center space-x-2">
+                                            <img
                                               src={album.cover}
-                                              width={250}
-                                              height={330}
+                                              // width={250}
+                                              // height={330}
                                               alt={album.name}
+                                              style={{borderRadius: "1rem"}}
+                                              resizeMode="contain"
+                                              
                                             />
                                           </div>
                                         </div>

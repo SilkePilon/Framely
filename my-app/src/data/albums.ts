@@ -9,7 +9,7 @@ export const listenNowAlbums: Album[] = [
     name: "React Rendezvous",
     artist: "Ethan Byte",
     cover:
-      "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80",
+      "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2018/06/DSC01662-Edit-4.jpg?fit=750%2C501&ssl=1",
   },
   {
     name: "Async Awakenings",
