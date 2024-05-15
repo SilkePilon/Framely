@@ -1,14 +1,13 @@
 "use client";
 import { Metadata } from "next";
 import Image from "next/image";
-import { PlusCircledIcon, CamaraIcon } from "@radix-ui/react-icons";
+import { PlusCircledIcon , CameraIcon} from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
-import { Bar, BarChart, ResponsiveContainer } from "recharts";
+// import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
 import {
   Drawer,
   DrawerClose,
@@ -67,31 +66,17 @@ import React, { useState } from "react";
 // };
 
 export default function MusicPage() {
-  const [file, setFile] = useState();
-  function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
+  const [file, setFile] = useState("");
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setFile(URL.createObjectURL(selectedFile) as string);
+    }
   }
   const prefix = "@";
 
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/music-light.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/music-dark.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="hidden dark:block"
-        />
-      </div>
       <div className="hidden md:block">
         <Menu />
         <div className="border-t">
@@ -122,7 +107,7 @@ export default function MusicPage() {
                               <DialogTitle>Upload!</DialogTitle>
                               <DialogDescription>
                                 Make changes to your profile here. Click save
-                                when you're done.
+                                when you&apos;re done.
                               </DialogDescription>
                             </DialogHeader>
                             <div className="grid gap-4 py-4">
@@ -139,7 +124,9 @@ export default function MusicPage() {
                                   className="col-span-3"
                                   ref={(target) => {
                                     try {
-                                      target.value = prefix;
+                                      if (target) {
+                                        target.value = prefix;
+                                      }
                                     } catch (e) {
                                       console.error(e);
                                     }
@@ -219,7 +206,7 @@ export default function MusicPage() {
                               </div>
                             </div>
                             <DialogFooter>
-                              <Button onChange={handleChange} type="submit">
+                              <Button type="submit">
                                 Upload!
                               </Button>
                             </DialogFooter>
