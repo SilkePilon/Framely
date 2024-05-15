@@ -324,6 +324,7 @@ export default function MusicPage() {
                                               src={album.cover}
                                               width={250}
                                               height={330}
+                                              alt={album.name}
                                             />
                                           </div>
                                         </div>
