@@ -1,13 +1,24 @@
 "use client";
 import { Metadata } from "next";
 import Image from "next/image";
-import { PlusCircledIcon , CameraIcon} from "@radix-ui/react-icons";
+import { PlusCircledIcon, CameraIcon } from "@radix-ui/react-icons";
 
 import { Button } from "../components/ui/button";
 import { ScrollArea, ScrollBar } from "../components/ui/scroll-area";
 import { Separator } from "../components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-// import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../components/ui/tabs";
+import {
+  FileUploader,
+  FileUploaderContent,
+  FileUploaderItem,
+  FileInput,
+} from "@/components/extension/file-uploader";
+
 import {
   Drawer,
   DrawerClose,
@@ -57,13 +68,43 @@ import { AlbumArtwork } from "@/components/album-artwork";
 import { Menu } from "@/components/menu";
 import { PodcastEmptyPlaceholder } from "@/components/podcast-empty-placeholder";
 import { Sidebar } from "@/components/sidebar";
-import { listenNowAlbums, madeForYouAlbums } from "@/data/albums";
+import { listenNowAlbums, TrendingImages } from "@/data/albums";
 import { playlists } from "@/data/playlists";
 import React, { useState } from "react";
+import { Radius } from "lucide-react";
 // export const metadata: Metadata = {
 //   title: "Music App",
 //   description: "Example music app using the components.",
 // };
+
+const FileSvgDraw = () => {
+  return (
+    <>
+      <svg
+        className="w-8 h-8 mb-3 text-gray-500 dark:text-gray-400"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 20 16"
+      >
+        <path
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+        />
+      </svg>
+      <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+        <span className="font-semibold">Click to upload</span>
+        &nbsp; or drag and drop
+      </p>
+      <p className="text-xs text-gray-500 dark:text-gray-400">
+        SVG, PNG, JPG or GIF
+      </p>
+    </>
+  );
+};
 
 export default function MusicPage() {
   const [file, setFile] = useState("");
@@ -75,9 +116,17 @@ export default function MusicPage() {
   }
   const prefix = "@";
 
+  const [files, setFiles] = useState<File[] | null>(null);
+
+  const dropZoneConfig = {
+    maxFiles: 1,
+    maxSize: 1024 * 1024 * 4,
+    multiple: false,
+  };
+
   return (
     <>
-      <div className="hidden md:block">
+      <div className="md:block">
         <Menu />
         <div className="border-t">
           <div className="bg-background">
@@ -94,7 +143,7 @@ export default function MusicPage() {
                         <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
                         <TabsTrigger value="live">Live</TabsTrigger>
                       </TabsList>
-                      <div className="ml-auto mr-4">
+                      <div style={{radius: "1rem"}} className="ml-auto mr-4">
                         <Dialog>
                           <DialogTrigger asChild>
                             <Button>
@@ -157,29 +206,36 @@ export default function MusicPage() {
                                   </InputOTPGroup>
                                 </InputOTP>
                               </div>
-                              <Separator className="my-4" />
+                              {/* <Separator className="my-4" /> */}
                               <div className="grid w-full max-w-sm items-center gap-1.5">
                                 <center>
-                                  <Label htmlFor="picture">Picture</Label>
+                                  <FileUploader
+                                    value={files}
+                                    onValueChange={setFiles}
+                                    dropzoneOptions={dropZoneConfig}
+                                    className="relative bg-background rounded-lg p-2"
+                                  >
+                                    <FileInput className="outline-dashed outline-1 outline-white">
+                                      <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full ">
+                                        <FileSvgDraw />
+                                      </div>
+                                    </FileInput>
+                                    <FileUploaderContent>
+                                      {files &&
+                                        files.length > 0 &&
+                                        files.map((file, i) => (
+                                          <FileUploaderItem key={i} index={i}>
+                                            {/* <Paperclip className="h-4 w-4 stroke-current" /> */}
+                                            <span>{file.name}</span>
+                                          </FileUploaderItem>
+                                        ))}
+                                    </FileUploaderContent>
+                                  </FileUploader>
                                 </center>
-                                <Input
-                                  placeholder="dw"
-                                  onChange={handleChange}
-                                  id="picture"
-                                  type="file"
-                                />
-                                <img
-                                  style={{
-                                    borderRadius: "1rem",
-                                    overflow: "hidden",
-                                  }}
-                                  src={file}
-                                />
+
                                 <Drawer>
                                   <DrawerTrigger asChild>
-                                    <Button>
-                                      Camara Settings
-                                    </Button>
+                                    <Button variant={"outline"}>Camara Settings</Button>
                                   </DrawerTrigger>
                                   <DrawerContent>
                                     <div className="mx-auto w-full max-w-sm">
@@ -189,9 +245,7 @@ export default function MusicPage() {
                                           Set your daily activity goal.
                                         </DrawerDescription>
                                       </DrawerHeader>
-                                      <div className="p-4 pb-0">
-                                        dwa
-                                      </div>
+                                      <div className="p-4 pb-0">dwa</div>
                                       <DrawerFooter>
                                         <Button>Submit</Button>
                                         <DrawerClose asChild>
@@ -206,9 +260,7 @@ export default function MusicPage() {
                               </div>
                             </div>
                             <DialogFooter>
-                              <Button type="submit">
-                                Upload!
-                              </Button>
+                              <Button type="submit">Upload!</Button>
                             </DialogFooter>
                           </DialogContent>
                         </Dialog>
@@ -231,60 +283,66 @@ export default function MusicPage() {
                       <Separator className="my-4" />
                       <div className="relative">
                         <ScrollArea>
-                          <div className="flex space-x-4 pb-4">
-                            {listenNowAlbums.map((album) => (
-                              <AlbumArtwork
-                                key={album.name}
-                                album={album}
-                                className="w-[250px]"
-                                aspectRatio="portrait"
-                                width={250}
-                                height={330}
-                              />
-                            ))}
-                          </div>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
-                        <ScrollArea>
-                          <div className="flex space-x-4 pb-4">
-                            {listenNowAlbums.map((album) => (
-                              <AlbumArtwork
-                                key={album.name}
-                                album={album}
-                                className="w-[250px]"
-                                aspectRatio="portrait"
-                                width={250}
-                                height={330}
-                              />
-                            ))}
-                          </div>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
-                      </div>
-                      <div className="mt-6 space-y-1">
-                        <h2 className="text-2xl font-semibold tracking-tight">
-                          Made for You
-                        </h2>
-                        <p className="text-sm text-muted-foreground">
-                          Your personal playlists. Updated daily.
-                        </p>
-                      </div>
-                      <Separator className="my-4" />
-                      <div className="relative">
-                        <ScrollArea>
-                          <div className="flex space-x-4 pb-4">
-                            {madeForYouAlbums.map((album) => (
-                              <AlbumArtwork
-                                key={album.name}
-                                album={album}
-                                className="w-[150px]"
-                                aspectRatio="square"
-                                width={150}
-                                height={150}
-                              />
-                            ))}
-                          </div>
-                          <ScrollBar orientation="horizontal" />
+                          <center>
+                            <div
+                              style={{
+                                display: "grid",
+                                justifyContent: "center",
+                                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                                gridGap: "15px" 
+
+                              }}
+                              className=""
+                            >
+                              {listenNowAlbums.map((album) => (
+                                <>
+                                  <Drawer>
+                                    <DrawerTrigger asChild>
+                                      <div style={{flexDirection: "row", alignItems: "center"}}>
+                                      <AlbumArtwork
+                                        key={album.name}
+                                        album={album}
+                                        className="w-[250px]"
+                                        aspectRatio="portrait"
+                                        width={250}
+                                        height={330}
+                                        
+                                      />
+                                      </div>
+                                    </DrawerTrigger>
+                                    <DrawerContent>
+                                      <div className="mx-auto w-full max-w-sm">
+                                        <DrawerHeader>
+                                          <DrawerTitle>{album.name}</DrawerTitle>
+                                          <DrawerDescription>
+                                            {album.cover}
+                                          </DrawerDescription>
+                                        </DrawerHeader>
+                                        <div className="p-4 pb-0">
+                                          <div className="flex items-center justify-center space-x-2">
+                                            <Image
+                                              src={album.cover}
+                                              width={250}
+                                              height={330}
+                                            />
+                                          </div>
+                                        </div>
+                                        <DrawerFooter>
+                                          {/* <Button>Submit</Button> */}
+                                          <DrawerClose asChild>
+                                            <Button variant="outline">
+                                              Close
+                                            </Button>
+                                          </DrawerClose>
+                                        </DrawerFooter>
+                                      </div>
+                                    </DrawerContent>
+                                  </Drawer>
+                                </>
+                              ))}
+                            </div>
+                          </center>
+                          {/* <ScrollBar orientation="horizontal" /> */}
                         </ScrollArea>
                       </div>
                     </TabsContent>

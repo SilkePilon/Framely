@@ -29,9 +29,286 @@ export const listenNowAlbums: Album[] = [
     cover:
       "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
   },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Stateful Symphony",
+    artist: "Beth Binary",
+    cover:
+      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+  },
+  
 ]
 
-export const madeForYouAlbums: Album[] = [
+export const TrendingImages: Album[] = [
   {
     name: "Thinking Components",
     artist: "Lena Logic",
@@ -68,4 +345,281 @@ export const madeForYouAlbums: Album[] = [
     cover:
       "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
   },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  {
+    name: "Thinking Components",
+    artist: "Lena Logic",
+    cover:
+      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
+  },
+  
 ]
