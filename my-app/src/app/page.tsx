@@ -143,7 +143,7 @@ export default function MusicPage() {
                         <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
                         <TabsTrigger value="live">Live</TabsTrigger>
                       </TabsList>
-                      <div style={{radius: "1rem"}} className="ml-auto mr-4">
+                      <div className="ml-auto mr-4">
                         <Dialog>
                           <DialogTrigger asChild>
                             <Button>
