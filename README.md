@@ -7,7 +7,8 @@
   <br>
 </h1>
 
-<h4 align="center">An open-source web platform made for photographers by photographers.</h4>
+<h4 align="center">An open-source web platform made for photographers by photographers.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSilkePilon%2FFramely&project-name=framly)</h4>
 
 ## About
 
