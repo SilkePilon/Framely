@@ -7,8 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">An open-source web platform made for photographers by photographers.
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSilkePilon%2FFramely&project-name=framly)</h4>
+<h4 align="center">An open-source web platform made for photographers by photographers.</h4>
 
 ## About
 
@@ -35,6 +34,12 @@ Framely is a social media platform designed specifically for photographers to sh
 - [next-themes](https://github.com/pacocoursey/next-themes)
 
 ## Selfhosted version
+
+Deploy with 1 click using vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSilkePilon%2FFramely&project-name=framly)
+
+or
 
 To get a local copy up and running, follow these steps:
 
