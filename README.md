@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/SilkePilon/youdotcom/"><img src="https://github.com/SilkePilon/youdotcom/blob/main/youdotcom.png?raw=true" alt="YouDotCom" width="200"></a>
+  <a href="https://github.com/SilkePilon/Framely/"><img src="https://github.com/SilkePilon/Framely/blob/main/assets/logo.png?raw=true" alt="YouDotCom" width="200"></a>
   <br>
   <br>
   Framely
