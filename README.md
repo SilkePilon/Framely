@@ -1,3 +1,14 @@
+<h1 align="center">
+  <br>
+  <a href="https://github.com/SilkePilon/youdotcom/"><img src="https://github.com/SilkePilon/youdotcom/blob/main/youdotcom.png?raw=true" alt="YouDotCom" width="200"></a>
+  <br>
+  <br>
+  Framely
+  <br>
+</h1>
+
+<h4 align="center">An open-source web platform made for photographers by photographers.</h4>
+
 # Framely
 
 Framely is a social media platform designed specifically for photographers to showcase their work, connect with fellow artists, and build a vibrant online community. With its modern and visually appealing user interface, Framely aims to provide a seamless experience for photographers to share their passion and creativity.
