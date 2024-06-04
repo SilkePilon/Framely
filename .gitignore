@@ -1,3 +1,6 @@
 examples/
 node_modules/
 old_ui/
+backend/uploads/
+backend/testing/
+backend/data.json
