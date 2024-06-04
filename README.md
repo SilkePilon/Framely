@@ -13,6 +13,8 @@
 
 Framely is a social media platform designed specifically for photographers to showcase their work, connect with fellow artists, and build a vibrant online community. With its modern and visually appealing user interface, Framely aims to provide a seamless experience for photographers to share their passion and creativity.
 
+Hi my name is silke, i'm the developer behind Framely. I'm working on this project becuase i never found the right platform to post my images on. my instagram [silke.pilon](https://www.instagram.com/silke.pilon/) is not the best place to post my photos as its a for profit company. Thats why this project was started, to help photographers find a place to post their awsome content.
+
 ## Features (in the works)
 
 - **User Profiles**: Create a personalized profile to showcase your portfolio, bio, and connect with other photographers.
