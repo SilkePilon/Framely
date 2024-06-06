@@ -6,6 +6,7 @@ import os
 from rich.console import Console
 import json
 import requests
+import sqlite3
 from fastapi.middleware.cors import CORSMiddleware
 import string
 import random
@@ -20,8 +21,43 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import io
 from fastapi import Form
+from PIL.TiffImagePlugin import IFDRational
 from fastapi import Request
 import PIL
+
+
+# create a database connection
+database_connection = sqlite3.connect("framely.db")
+database_cursor = database_connection.cursor()
+database_cursor.execute("""
+    CREATE TABLE IF NOT EXISTS images (
+        id TEXT PRIMARY KEY,
+        title TEXT,
+        description TEXT,
+        image_filename TEXT,
+        file_extension TEXT,
+        image_path TEXT,
+        code TEXT,
+        metadata TEXT,
+        likes INTEGER DEFAULT 0
+    )
+""")
+database_cursor.execute("""
+    CREATE TABLE IF NOT EXISTS comments (
+        image_id TEXT,
+        comment TEXT
+        )
+""")
+database_cursor.execute("""
+    CREATE TABLE IF NOT EXISTS comments (
+        image_id TEXT,
+        comment TEXT
+        )
+""")
+database_connection.commit()
+
+# check if database is created
+print(database_connection.total_changes)
 
 console = Console()
 app = FastAPI()
@@ -113,19 +149,11 @@ async def upload_image(title: str = Form(...), description: str = Form(...), ima
         with open(image_path, "wb") as f:
             shutil.copyfileobj(image.file, f)
 
-        # Save the image data in the general json file
-        data_path = "data.json"
-        # with open(data_path, 'x') as file:
-        #     pass
-
-        with open(data_path, "r") as f:
-            data = json.load(f)
-
         image_data_dict["image_path"] = image_path
         image_data_dict["code"] = code
         dct = {}
-        # Extract metadata from the image
 
+        # Extract metadata from the image
         img = Image.open(image_path)
         for k, v in img.getexif().items():
             if k in ExifTags.TAGS:
@@ -137,15 +165,22 @@ async def upload_image(title: str = Form(...), description: str = Form(...), ima
                 elif isinstance(v, bytes):
                     v = v.decode(errors="replace")
                 dct[ExifTags.TAGS[k]] = v
-        outs = json.dumps(dct)
-        outs = json.loads(outs)
-        data[code] = image_data_dict
+                # dct[str(Image.open(image_path).getexif()[k])] = str(v)
+        outs = str(dct)
         image_data_dict["metadata"] = outs
-        with open(data_path, "w") as f:
-            json.dump(data, f)
+
+        # Insert the image data into the SQLite table
+        database_cursor.execute("""
+            INSERT INTO images (id, title, description, image_filename, file_extension, image_path, code, metadata)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (code, image_data_dict["title"], image_data_dict["description"], image_data_dict["image_filename"],
+              image_data_dict["file_extension"], image_data_dict["image_path"], image_data_dict["code"],
+              image_data_dict["metadata"]))
+        database_connection.commit()
 
         # Return the response
-        return JSONResponse(content={"message": "Image uploaded successfully"})
+        return {"message": "Image uploaded successfully"}
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -153,7 +188,7 @@ async def upload_image(title: str = Form(...), description: str = Form(...), ima
 @app.get("/get_images")
 async def get_images():
     """
-    Retrieves a maximum of 30 images along with their data from the uploads folder.
+    Retrieves a maximum of 30 images along with their data, likes, and comments from the database.
 
     Returns:
     - JSONResponse: Response object containing the images and their data as JSON.
@@ -162,34 +197,114 @@ async def get_images():
     - HTTPException: If an error occurs during the retrieval process.
     """
     try:
+        # Fetch the image data from the SQLite table
+        database_cursor.execute(
+            "SELECT * FROM images ORDER BY id DESC LIMIT 30")
+        image_data = database_cursor.fetchall()
+
         images = []
-        count = 0
-        # Iterate through the files in the uploads folder
-        for file_name in os.listdir("uploads"):
-            file_path = os.path.join("uploads", file_name)
-            if os.path.isfile(file_path):
-                # Check if the file is an image
-                if file_name.endswith(".jpg") or file_name.endswith(".jpeg") or file_name.endswith(".png"):
-                    # Load the image data from the data.json file
-                    data_path = "data.json"
-                    if os.path.isfile(data_path):
-                        with open(data_path, "r") as f:
-                            image_data = json.load(f)
-                        # Create a dictionary with the image data and path
-                        image = {
-                            "image_path": file_path,
-                            "image_data": image_data
-                        }
-                        # Add the image to the list
-                        images.append(image)
-                        count += 1
-                        # Break the loop if the maximum number of images is reached
-                        if count >= 30:
-                            break
+        for row in image_data:
+            image_id = row[0]
+
+            # Fetch the comments from the comments table
+            database_cursor.execute(
+                "SELECT comment FROM comments WHERE image_id=?", (image_id,))
+            comments_data = database_cursor.fetchall()
+            comments = [comment[0] for comment in comments_data]
+
+            image = {
+                "id": image_id,
+                "title": row[1],
+                "description": row[2],
+                "image_filename": row[3],
+                "file_extension": row[4],
+                "image_path": row[5],
+                "code": row[6],
+                "metadata": row[7],
+                "likes": row[8],
+                "comments": comments
+            }
+            images.append(image)
+
         # Return the images as JSON
-        return JSONResponse(content=images)
+        return images
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/add_comment")
+async def add_comment(image_id: str, comment: str):
+    """
+    Adds a comment to an image.
+
+    Parameters:
+    - image_id: The ID of the image.
+    - comment: The comment to be added.
+
+    Returns:
+    - JSONResponse: Response object confirming the successful addition of the comment.
+
+    Raises:
+    - HTTPException: If an error occurs during the comment addition process.
+    """
+    try:
+        # Check if the image exists in the database
+        database_cursor.execute("SELECT * FROM images WHERE id=?", (image_id,))
+        image_data = database_cursor.fetchone()
+        if image_data is None:
+            raise HTTPException(status_code=404, detail="Image not found")
+
+        # Add the comment to the database
+        database_cursor.execute("""
+            INSERT INTO comments (image_id, comment)
+            VALUES (?, ?)
+        """, (image_id, comment))
+        database_connection.commit()
+
+        # Return the response
+        return {"message": "Comment added successfully"}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/like_image/{image_id}")
+async def like_image(image_id: str):
+    """
+    Likes an image.
+
+    Parameters:
+    - image_id: The ID of the image to be liked.
+
+    Returns:
+    - JSONResponse: Response object confirming the successful like.
+
+    Raises:
+    - HTTPException: If an error occurs during the like process.
+    """
+    try:
+        # Check if the image exists in the database
+        database_cursor.execute("SELECT * FROM images WHERE id=?", (image_id,))
+        image_data = database_cursor.fetchone()
+        if image_data is None:
+            raise HTTPException(status_code=404, detail="Image not found")
+
+        # Increment the like count in the database
+        database_cursor.execute(
+            "UPDATE images SET likes = likes + 1 WHERE id=?", (image_id,))
+        database_connection.commit()
+
+        # Return the response
+        return {"message": "Image liked successfully"}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Close the SQLite connection when the application is stopped
+@app.on_event("shutdown")
+def shutdown_event():
+    database_connection.close()
 
 
 if __name__ == "__main__":

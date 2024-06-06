@@ -4,3 +4,4 @@ old_ui/
 backend/uploads/
 backend/testing/
 backend/data.json
+backend/framely.db
