@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import string
 import random
 from fastapi import Query
+from contextlib import asynccontextmanager
 import shutil
 from fastapi import FastAPI, HTTPException, File, UploadFile
 import uvicorn
@@ -59,8 +60,17 @@ database_connection.commit()
 # check if database is created
 print(database_connection.total_changes)
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    try:
+        yield
+    finally:
+        # Close the database connection during shutdown
+        database_connection.close()
+
 console = Console()
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 origins = ["*"]
 app.add_middleware(
@@ -299,12 +309,6 @@ async def like_image(image_id: str):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-# Close the SQLite connection when the application is stopped
-@app.on_event("shutdown")
-def shutdown_event():
-    database_connection.close()
 
 
 if __name__ == "__main__":
