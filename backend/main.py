@@ -20,12 +20,13 @@ import os
 from PIL import Image, ExifTags, TiffImagePlugin
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import logging
 import io
 from fastapi import Form
 from PIL.TiffImagePlugin import IFDRational
 from fastapi import Request
 import PIL
-
+console = Console()
 
 # create a database connection
 database_connection = sqlite3.connect("framely.db")
@@ -56,9 +57,8 @@ database_cursor.execute("""
         )
 """)
 database_connection.commit()
-
-# check if database is created
-print(database_connection.total_changes)
+# print a happy message to the console
+console.print("📁  Database connection established", style="bold green")
 
 
 @asynccontextmanager
@@ -69,7 +69,6 @@ async def lifespan(app: FastAPI):
         # Close the database connection during shutdown
         database_connection.close()
 
-console = Console()
 app = FastAPI(lifespan=lifespan)
 
 origins = ["*"]
@@ -80,6 +79,21 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# print a happy message to the console
+console.print("🚀  FastAPI app started", style="bold green")
+
+
+@app.middleware("http")
+async def modify_request_response_middleware(request: Request, call_next):
+    old_time = time.time()
+    # print a happy message to the console
+    console.print(f"📩  New incoming request ({
+                  request.url})", style="bold green")
+    response = await call_next(request)
+    new_time = time.time() - old_time
+    console.print(f"📨  Request send on its way hone! ({new_time}) ({
+                  request.url})", style="bold green")
+    return response
 
 
 @app.post("/extract_metadata")
@@ -113,6 +127,10 @@ async def extract_metadata(image: UploadFile = File(...)):
                 dct[ExifTags.TAGS[k]] = v
         outs = json.dumps(dct)
         outs = json.loads(outs)
+
+        # print a happy message to the console
+        console.print("😁  Metadata extracted successfully", style="bold green")
+
         # Return the metadata as JSON
         return JSONResponse(content=outs)
     except Exception as e:
@@ -188,6 +206,9 @@ async def upload_image(title: str = Form(...), description: str = Form(...), ima
               image_data_dict["metadata"]))
         database_connection.commit()
 
+        # print a happy message to the console
+        console.print("📁  Image uploaded successfully", style="bold green")
+
         # Return the response
         return {"message": "Image uploaded successfully"}
 
@@ -236,6 +257,10 @@ async def get_images():
             }
             images.append(image)
 
+        # print a happy message to the console
+        console.print("🔍  Someone is watching the master feed?!",
+                      style="bold green")
+
         # Return the images as JSON
         return images
     except Exception as e:
@@ -271,6 +296,10 @@ async def add_comment(image_id: str, comment: str):
         """, (image_id, comment))
         database_connection.commit()
 
+        # print a happy message to the console
+        console.print(f"💬  Someone has some nice things to say about image `{
+                      image_id}`", style="bold green")
+
         # Return the response
         return {"message": "Comment added successfully"}
 
@@ -304,6 +333,10 @@ async def like_image(image_id: str):
             "UPDATE images SET likes = likes + 1 WHERE id=?", (image_id,))
         database_connection.commit()
 
+        # print a happy message to the console
+        console.print(f"👍  Someone liked image `{
+                      image_id}`", style="bold green")
+
         # Return the response
         return {"message": "Image liked successfully"}
 
@@ -312,4 +345,4 @@ async def like_image(image_id: str):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, port=8000)
+    uvicorn.run(app, port=8000, log_level="critical")
