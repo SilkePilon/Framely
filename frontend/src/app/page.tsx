@@ -433,7 +433,7 @@ export default function Home() {
             </Button>
           </header>
           <div style={{ margin: "1rem" }}>
-            <Masonry columnsCount={feedRows} gutter={13}>
+            <Masonry columnsCount={feedRows} gutter="13px">
               {secondRow.map((review) => (
                 <>
                   {/* <Card className="items-center"> */}
