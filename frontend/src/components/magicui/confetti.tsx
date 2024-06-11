@@ -1,5 +1,5 @@
 import confetti from "canvas-confetti";
-
+declare module "canvas-confetti";
 interface ConfettiOptions extends confetti.Options {
   particleCount?: number;
   angle?: number;
