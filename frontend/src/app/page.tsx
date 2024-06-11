@@ -28,7 +28,7 @@ import {
   Heart,
 } from "lucide-react";
 import { Moon, Sun } from "lucide-react";
-import { BorderBeam } from "@/components/magicui/border-beam.tsx";
+import { BorderBeam } from "@/components/magicui/border-beam";
 import Masonry from "react-responsive-masonry";
 import {
   HoverCard,
@@ -432,7 +432,7 @@ export default function Home() {
             </Button>
           </header>
           <div style={{ margin: "1rem" }}>
-            <Masonry columnsCount={feedRows} gutter={13}>
+            <Masonry columnsCount={feedRows} gutter="13">
               {secondRow.map((review) => (
                 <>
                   {/* <Card className="items-center"> */}
@@ -459,11 +459,11 @@ export default function Home() {
                             className="marginTop-10"
                             onMouseOver={(e) => {
                               e.currentTarget.style.transform = "scale(1.02)";
-                              e.currentTarget.style.zIndex = 999;
+                              e.currentTarget.style.zIndex = "999";
                             }}
                             onMouseOut={(e) => {
                               e.currentTarget.style.transform = "scale(1)";
-                              e.currentTarget.style.zIndex = 1;
+                              e.currentTarget.style.zIndex = "1";
                             }}
                             onError={(i) => (i.target.style.display = "none")}
                           />
