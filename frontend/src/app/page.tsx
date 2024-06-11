@@ -460,13 +460,15 @@ export default function Home() {
                             className="marginTop-10"
                             onMouseOver={(e) => {
                               e.currentTarget.style.transform = "scale(1.02)";
-                              e.currentTarget.style.zIndex = 999;
+                              e.currentTarget.style.zIndex = "999";
                             }}
                             onMouseOut={(e) => {
                               e.currentTarget.style.transform = "scale(1)";
-                              e.currentTarget.style.zIndex = 1;
+                              e.currentTarget.style.zIndex = "1";
                             }}
-                            onError={(i) => (i.target.style.display = "none")}
+                            onError={(
+                              i: React.SyntheticEvent<HTMLImageElement, Event>
+                            ) => (i.currentTarget.style.display = "none")}
                           />
                         </HoverCardTrigger>
                         <HoverCardContent
@@ -510,9 +512,12 @@ export default function Home() {
                                 }}
                                 // className="marginTop-10"
 
-                                onError={(i) =>
-                                  (i.target.style.display = "none")
-                                }
+                                onError={(
+                                  i: React.SyntheticEvent<
+                                    HTMLImageElement,
+                                    Event
+                                  >
+                                ) => (i.currentTarget.style.display = "none")}
                               />
                             </div>
 
