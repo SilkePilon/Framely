@@ -35,7 +35,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-
+import Spline from "@splinetool/react-spline";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -114,7 +114,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Inter } from "next/font/google";
-
 const reviews = [
   {
     name: "Jack",
@@ -207,7 +206,7 @@ export default function Home() {
   }, []);
 
   const isMobile = width <= 768;
-  let feedRows = isMobile ? 1 : 3;
+  let feedRows = isMobile ? 1 : 5;
 
   const handleClick = () => {
     const scalar = 2;
@@ -250,21 +249,27 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ zIndex: -100000000, pointerEvents: "none" }}>
-        <Particles
-          className="absolute inset-0"
-          quantity={100}
-          ease={80}
-          color={color}
-          refresh
-        />
-        {/* <Meteors number={40} /> */}
-      </div>
       <div className="grid h-screen w-full pl-[56px]">
+        <div
+          style={{
+            position: "absolute",
+            // top: 0,
+            // left: 0,
+            width: "100vw",
+            height: "100vh",
+            borderRadius: "10rem",
+            zIndex: 1,
+          }}
+        >
+          {/* <Spline
+            scene="https://prod.spline.design/SXDnR4VmcO9k2y26/scene.splinecode"
+            className="absolute inset-0 z-0"
+          /> */}
+        </div>
         {/* <Meteors number={40} /> */}
         {/* <RetroGrid /> */}
 
-        <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
+        <aside className="inset-y fixed left-0 z-70 flex h-full flex-col border-r">
           <div className="border-b p-2">
             <Button variant="outline" size="icon" aria-label="Home">
               <Triangle className="size-5 fill-foreground" />
@@ -418,7 +423,7 @@ export default function Home() {
           </nav>
         </aside>
         <div className="flex flex-col">
-          <header className="sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b bg-background px-4">
+          <header className="sticky top-0 z-40 flex h-[57px] items-center gap-1 border-b bg-background px-4">
             <h1 className="text-xl font-semibold flex items-center">
               <span>Image Feed</span>
               <MessageCircleHeart className="size-6 ml-2" />
@@ -432,7 +437,7 @@ export default function Home() {
               Upload
             </Button>
           </header>
-          <div style={{ margin: "1rem" }}>
+          <div className="z-10" style={{ margin: "1rem", overflowX: "hidden" }}>
             <Masonry columnsCount={feedRows} gutter="13px">
               {secondRow.map((review) => (
                 <>

@@ -81,3 +81,7 @@
   img.hover-zoom-feed:hover {
     transform: scale(1.25);
   }
+
+  html{
+    overflow-x: hidden;
+  }

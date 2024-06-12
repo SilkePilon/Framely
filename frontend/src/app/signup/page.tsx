@@ -68,6 +68,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Spline from "@splinetool/react-spline";
+import { Separator } from "@/components/ui/separator";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -228,13 +230,20 @@ export default function Home() {
   }, [theme]);
   return (
     <>
-      <div style={{ zIndex: -100 }}>
-        <Particles
-          className="absolute inset-0"
-          quantity={100}
-          ease={80}
-          color={color}
-          refresh
+      <div
+        style={{
+          position: "absolute",
+          // top: 0,
+          // left: 0,
+          width: "100vw",
+          height: "100vh",
+          borderRadius: "10rem",
+          zIndex: 1,
+        }}
+      >
+        <Spline
+          scene="https://prod.spline.design/SXDnR4VmcO9k2y26/scene.splinecode"
+          className="absolute inset-0 z-0"
         />
       </div>
       <div
@@ -250,45 +259,131 @@ export default function Home() {
           transform: "translate(-50%, -50%)", // Add this line
         }}
       >
-        <Card>
+        <Card
+          style={{
+            background: "rgba(0, 0, 0, 0.1)",
+            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
+            borderRadius: "1rem",
+            border: "1px solid rgba(255, 255, 255, 0.18)",
+            padding: "20px",
+          }}
+        >
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl">Create an account</CardTitle>
+            <CardTitle className="text-2xl">Create Your Account</CardTitle>
             <CardDescription>
-              Enter your email below to create your account
+              Enter your email below to create to your account
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid grid-cols-2 gap-6">
-              <Button variant="outline">
+              <Button
+                style={{
+                  background: "rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(4px)",
+                  WebkitBackdropFilter: "blur(4px)",
+                  borderRadius: "0.5rem",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  padding: "20px",
+                  color: "white",
+                }}
+                variant="outline"
+              >
                 <Icons.gitHub className="mr-2 h-4 w-4" />
                 Github
               </Button>
-              <Button variant="outline">
+              <Button
+                style={{
+                  background: "rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(4px)",
+                  WebkitBackdropFilter: "blur(4px)",
+                  borderRadius: "0.5rem",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  padding: "20px",
+                  color: "white",
+                }}
+                variant="outline"
+              >
                 <Icons.google className="mr-2 h-4 w-4" />
                 Google
               </Button>
             </div>
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
+                {/* <span className="w-full border-t" /> */}
+                <Separator />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
+                <span
+                  style={{
+                    background: "rgba(0, 0, 0, 0.05)",
+                    backdropFilter: "blur(4px)",
+                    WebkitBackdropFilter: "blur(4px)",
+                    borderRadius: "0.3rem",
+                    color: "white",
+                  }}
+                  className=" px-2 text-muted-foreground"
+                >
                   Or continue with
                 </span>
               </div>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" />
+              <Input
+                style={{
+                  background: "rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(4px)",
+                  WebkitBackdropFilter: "blur(4px)",
+                  borderRadius: "0.5rem",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  padding: "20px",
+                  color: "white",
+                }}
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+              />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" />
+              <Input
+                style={{
+                  background: "rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(4px)",
+                  WebkitBackdropFilter: "blur(4px)",
+                  borderRadius: "0.5rem",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  padding: "20px",
+                  color: "white",
+                }}
+                id="password"
+                type="password"
+                placeholder="********"
+              />
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full">Create account</Button>
+            <Button
+              style={{
+                background: "rgba(255, 255, 255, 0.1)",
+                boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                backdropFilter: "blur(4px)",
+                WebkitBackdropFilter: "blur(4px)",
+                borderRadius: "0.5rem",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                padding: "20px",
+                color: "white",
+              }}
+              className="w-full"
+            >
+              Login
+            </Button>
           </CardFooter>
         </Card>
       </div>
