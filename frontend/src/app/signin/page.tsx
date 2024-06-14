@@ -19,7 +19,7 @@ import {
   ImagePlus,
 } from "lucide-react";
 import { Moon, Sun } from "lucide-react";
-
+import { signIn } from "@/auth";
 import { useTheme } from "next-themes";
 
 import Meteors from "@/components/magicui/meteors";
@@ -278,22 +278,31 @@ export default function Home() {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid grid-cols-2 gap-6">
-              <Button
-                style={{
-                  background: "rgba(0, 0, 0, 0.2)",
-                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-                  backdropFilter: "blur(4px)",
-                  WebkitBackdropFilter: "blur(4px)",
-                  borderRadius: "0.5rem",
-                  border: "1px solid rgba(255, 255, 255, 0.18)",
-                  padding: "20px",
-                  color: "white",
+              <form
+                action={async () => {
+                  // "use server";
+                  await signIn("github");
                 }}
-                variant="outline"
               >
-                <Icons.gitHub className="mr-2 h-4 w-4" />
-                Github
-              </Button>
+                {/* <button type="submit">Signin with GitHub</button> */}
+                <Button
+                  style={{
+                    background: "rgba(0, 0, 0, 0.2)",
+                    boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                    backdropFilter: "blur(4px)",
+                    WebkitBackdropFilter: "blur(4px)",
+                    borderRadius: "0.5rem",
+                    border: "1px solid rgba(255, 255, 255, 0.18)",
+                    padding: "20px",
+                    color: "white",
+                  }}
+                  type="submit"
+                  variant="outline"
+                >
+                  <Icons.gitHub className="mr-2 h-4 w-4" />
+                  Github
+                </Button>
+              </form>
               <Button
                 style={{
                   background: "rgba(0, 0, 0, 0.2)",
