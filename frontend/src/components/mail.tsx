@@ -67,15 +67,15 @@ interface MailProps {
 let leftPanelRef = createRef<ImperativePanelHandle>();
 let rightPanelRef = createRef<ImperativePanelHandle>();
 
-const delayTime = 10; // 1 second delay
+const delayTime = 1; // 1 second delay
 const maxValue = 20;
-const incrementDelay = 20; // 100ms delay between increments
+const incrementDelay = 15; // 100ms delay between increments
 
 export function openImage() {
   let number = 0;
   const currentSize = rightPanelRef.current?.getSize();
 
-  if (currentSize === maxValue) {
+  if (currentSize >= maxValue) {
     animateToZero();
   } else {
     animateToMaxValue();
@@ -83,7 +83,7 @@ export function openImage() {
 }
 
 function animateToZero() {
-  let number = maxValue;
+  let number = rightPanelRef.current?.getSize();
 
   const interval = setInterval(() => {
     rightPanelRef.current?.resize(number);
