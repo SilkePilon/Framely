@@ -26,8 +26,9 @@ import {
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+// @ts-ignore
+import { ImperativePanelHandle } from "@/components/ui/resizable";
 import {
-  ImperativePanelHandle,
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
