@@ -1,11 +1,11 @@
 export const mails = [
   {
     id: "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
-    name: "Welcome to Framely",
+    name: "Silke Pilon",
     email: "General discussion",
     subject: "How to get started with Framely",
     text: "Welcome to Framely! We're excited to have you on board. Here are a few tips to help you get started with our platform:\n\n1. Upload your photos and videos in raw up to 8k\n2. Find other creators\n3. Share your images with friends and family or even your paid clients.\n\nIf you have any questions or need assistance, feel free to reach out to our support team.\n\nThe Framely Team",
-    date: "2023-10-22T09:00:00",
+    date: "2024-06-15T09:00:00",
     read: true,
     labels: ["meeting", "work", "important"],
   },

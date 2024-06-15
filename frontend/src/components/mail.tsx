@@ -22,6 +22,7 @@ import {
   Crop,
   Moon,
   Sun,
+  SquareX,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -67,28 +68,28 @@ interface MailProps {
 let leftPanelRef = createRef<ImperativePanelHandle>();
 let rightPanelRef = createRef<ImperativePanelHandle>();
 
-const delayTime = 1; // 1 second delay
-const maxValue = 20;
+const delayTime = 10; // 1 second delay
+const maxValue = 21;
 const incrementDelay = 15; // 100ms delay between increments
 
 export function openImage() {
-  let number = 0;
   const currentSize = rightPanelRef.current?.getSize();
-
-  if (currentSize >= maxValue) {
+  console.log("Opening image", currentSize);
+  if (currentSize > maxValue) {
+    animateToZero();
+  } else if (currentSize === 20) {
     animateToZero();
   } else {
     animateToMaxValue();
   }
 }
 
-function animateToZero() {
+export function animateToZero() {
   let number = rightPanelRef.current?.getSize();
-
   const interval = setInterval(() => {
     rightPanelRef.current?.resize(number);
     number--;
-
+    console.log("Animated to zero", number);
     if (number < 0) {
       clearInterval(interval);
       animateToMaxValue();
@@ -96,16 +97,26 @@ function animateToZero() {
   }, incrementDelay);
 }
 
-function animateToMaxValue() {
+export function animateToZeroOnce() {
+  let number = rightPanelRef.current?.getSize();
+  const interval = setInterval(() => {
+    rightPanelRef.current?.resize(number);
+    number--;
+    console.log("Animated to zero", number);
+    if (number < 0) {
+      clearInterval(interval);
+    }
+  }, incrementDelay);
+}
+export function animateToMaxValue() {
   let number = 0;
-
   // Initial delay
   setTimeout(() => {
     const interval = setInterval(() => {
       rightPanelRef.current?.resize(number);
       number++;
-
-      if (number > maxValue) {
+      console.log("Animated to max", number);
+      if (number >= maxValue) {
         clearInterval(interval);
       }
     }, incrementDelay);
@@ -351,6 +362,7 @@ export function Mail({
               collapsible={true}
               ref={rightPanelRef}
               // defaultSize={defaultLayout[2]}
+              // onPointerLeave={animateToZeroOnce}
             >
               <MailDisplay
                 mail={mails.find((item) => item.id === mail.selected) || null}
