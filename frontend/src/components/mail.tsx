@@ -68,7 +68,7 @@ interface MailProps {
 let leftPanelRef = createRef<ImperativePanelHandle>();
 let rightPanelRef = createRef<ImperativePanelHandle>();
 
-const delayTime = 10; // 1 second delay
+const delayTime = 200; // 1 second delay
 const maxValue = 21;
 const incrementDelay = 15; // 100ms delay between increments
 
@@ -92,6 +92,7 @@ export function animateToZero() {
     console.log("Animated to zero", number);
     if (number < 0) {
       clearInterval(interval);
+      const dwad = setInterval(() => {}, 2000);
       animateToMaxValue();
     }
   }, incrementDelay);
