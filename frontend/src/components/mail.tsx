@@ -362,7 +362,7 @@ export function Mail({
             <ResizablePanel
               collapsible={true}
               ref={rightPanelRef}
-              defaultSize={100}
+              defaultSize={40}
               // onPointerLeave={animateToZeroOnce}
             >
               <MailDisplay
