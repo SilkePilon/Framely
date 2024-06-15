@@ -212,7 +212,7 @@ export function Mail({
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
               <h1 style={{ marginTop: "6px" }} className="text-lg font-bold">
-                Silke Pilon's Profile
+                Silke Pilon&apos;s Profile
               </h1>
               {/* <TabsList className="ml-auto" style={{ borderRadius: "0.60rem" }}>
                 <TabsTrigger
