@@ -97,8 +97,8 @@ export function Mail({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Inbox",
-                label: "128",
+                title: "Feed",
+                label: "128 new posts",
                 icon: Inbox,
                 variant: "default",
               },
@@ -135,48 +135,50 @@ export function Mail({
             ]}
           />
           <Separator />
-          <Nav
-            isCollapsed={isCollapsed}
-            links={[
-              {
-                title: "Social",
-                label: "972",
-                icon: Users2,
-                variant: "ghost",
-              },
-              {
-                title: "Updates",
-                label: "342",
-                icon: AlertCircle,
-                variant: "ghost",
-              },
-              {
-                title: "Forums",
-                label: "128",
-                icon: MessagesSquare,
-                variant: "ghost",
-              },
-              {
-                title: "Shopping",
-                label: "8",
-                icon: ShoppingCart,
-                variant: "ghost",
-              },
-              {
-                title: "Promotions",
-                label: "21",
-                icon: Archive,
-                variant: "ghost",
-              },
-            ]}
-          />
+          <div>
+            <Nav
+              isCollapsed={isCollapsed}
+              links={[
+                {
+                  title: "Social",
+                  label: "972",
+                  icon: Users2,
+                  variant: "ghost",
+                },
+                {
+                  title: "Updates",
+                  label: "342",
+                  icon: AlertCircle,
+                  variant: "ghost",
+                },
+                {
+                  title: "Forums",
+                  label: "128",
+                  icon: MessagesSquare,
+                  variant: "ghost",
+                },
+                {
+                  title: "Shopping",
+                  label: "8",
+                  icon: ShoppingCart,
+                  variant: "ghost",
+                },
+                {
+                  title: "Promotions",
+                  label: "21",
+                  icon: Archive,
+                  variant: "ghost",
+                },
+              ]}
+            />
+          </div>
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
               <h1 className="text-xl font-bold">Trending Images</h1>
-              <TabsList className="ml-auto">
+              <TabsList className="ml-auto" style={{ marginLeft: 10 }}>
                 <TabsTrigger
                   value="all"
                   className="text-zinc-600 dark:text-zinc-200"

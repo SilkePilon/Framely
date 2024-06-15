@@ -257,12 +257,39 @@ export function MailList({ items }: MailListProps) {
                   </HoverCardTrigger>
                   <HoverCardContent
                     style={{
-                      borderBottomLeftRadius: "1rem",
-                      borderBottomRightRadius: "1rem",
+                      //   borderBottomLeftRadius: "1rem",
+                      //   borderBottomRightRadius: "1rem",
+                      borderRadius: "0.90rem",
                       textAlign: "center",
+                      alignContent: "center",
+                      width: "20vw",
                     }}
                   >
-                    Click image to view details
+                    <p>Image Title</p>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      Camara
+                    </Badge>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      ISO
+                    </Badge>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      Secondary
+                    </Badge>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      Model
+                    </Badge>
                   </HoverCardContent>
                 </HoverCard>
                 {/* </AlertDialogTrigger>

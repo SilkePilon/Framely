@@ -90,3 +90,7 @@
     @apply px-4;
   }
 }
+
+html, body {
+  overflow-x: hidden;
+}
