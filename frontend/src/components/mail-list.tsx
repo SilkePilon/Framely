@@ -221,7 +221,7 @@ export function MailList({ items }: MailListProps) {
     <>
       <ScrollArea className="h-screen">
         <div className="z-10" style={{ marginRight: 20, marginLeft: 20 }}>
-          <Masonry columnsCount={feedRows} gutter="13px">
+          <Masonry columnsCount={feedRows} gutter="20px">
             {secondRow.map((review) => (
               <>
                 {/* <AlertDialog>
