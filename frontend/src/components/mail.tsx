@@ -13,6 +13,7 @@ import {
   ShoppingCart,
   Trash2,
   Users2,
+  PanelLeftOpen,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -21,6 +22,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
+  ImperativePanelHandle,
 } from "@/components/ui/resizable";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -32,6 +34,8 @@ import { Nav } from "@/components/nav";
 import { type Mail } from "@/app/data";
 import { useMail } from "@/app/use-mail";
 import { useEffect, useState } from "react";
+import { createRef } from "react";
+import { Button } from "@/components/ui/button";
 interface MailProps {
   accounts: {
     label: string;
@@ -71,6 +75,8 @@ export function Mail({
   const isMobile = width <= 700;
   let show = isMobile ? false : true;
 
+  let leftPanelRef = createRef<ImperativePanelHandle>();
+
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
@@ -87,7 +93,7 @@ export function Mail({
           collapsedSize={navCollapsedSize}
           collapsible={true}
           minSize={15}
-          maxSize={20}
+          maxSize={15}
           onCollapse={() => {
             setIsCollapsed(true);
             document.cookie = `react-resizable-panels:collapsed=true`;
@@ -100,6 +106,7 @@ export function Mail({
             isCollapsed &&
               "min-w-[50px] transition-all duration-300 ease-in-out"
           )}
+          ref={leftPanelRef}
         >
           <div
             className={cn(
@@ -110,6 +117,13 @@ export function Mail({
             <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
           </div>
           <Separator />
+          {/* <PanelLeftOpen
+            onClick={() => {
+              leftPanelRef.current?.expand();
+            }}
+            className="size-5"
+            style={{ marginRight: "0.5rem" }}
+          /> */}
           <Nav
             isCollapsed={isCollapsed}
             links={[
