@@ -4,7 +4,7 @@ export const mails = [
     name: "Silke Pilon",
     email: "General discussion",
     subject: "How to get started with Framely",
-    text: "Welcome to Framely! We're excited to have you on board. Here are a few tips to help you get started with our platform:\n\n1. Upload your photos and videos in raw up to 8k\n2. Find other creators\n3. Share your images with friends and family or even your paid clients.\n\nIf you have any questions or need assistance, feel free to reach out to our support team.\n\nThe Framely Team",
+    text: "Welcome to Framely! We're excited to have you on board. Here are a few tips to help you get started with our platform:\n\n1. Upload your photos and videos in raw up to 8k\n2. Find other creators\n3. Share your images with friends and family or even your paid clients.\n\nIf you have any questions or need assistance, feel free to reach out to our support team.\n\nPress 'Close' above to begin browsing!\n\nThe Framely Team",
     date: "2024-06-15T09:00:00",
     read: true,
     labels: ["meeting", "work", "important"],
