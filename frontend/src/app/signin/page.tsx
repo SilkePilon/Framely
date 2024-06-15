@@ -19,14 +19,13 @@ import {
   ImagePlus,
 } from "lucide-react";
 import { Moon, Sun } from "lucide-react";
-import { signIn } from "@/auth";
 import { useTheme } from "next-themes";
 
 import Meteors from "@/components/magicui/meteors";
 import Particles from "@/components/magicui/particles";
 import RetroGrid from "@/components/magicui/retro-grid";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -70,7 +69,7 @@ import {
 } from "@/components/ui/tooltip";
 import Spline from "@splinetool/react-spline";
 import { Separator } from "@/components/ui/separator";
-
+import { SignIn } from "@/lib/auth-action";
 type IconProps = React.HTMLAttributes<SVGElement>;
 
 const Icons = {
@@ -221,13 +220,13 @@ const Icons = {
 };
 
 export default function Home() {
-  const { setTheme } = useTheme();
-  const { theme } = useTheme();
-  const [color, setColor] = useState("#ffffff");
+  // const { setTheme } = useTheme();
+  // const { theme } = useTheme();
+  // const [color, setColor] = useState("#ffffff");
 
-  useEffect(() => {
-    setColor(theme === "dark" ? "#ffffff" : "#000000");
-  }, [theme]);
+  // useEffect(() => {
+  //   setColor(theme === "dark" ? "#ffffff" : "#000000");
+  // }, [theme]);
   return (
     <>
       <div
@@ -278,31 +277,24 @@ export default function Home() {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid grid-cols-2 gap-6">
-              <form
-                action={async () => {
-                  // "use server";
-                  await signIn("github");
+              <Button
+                style={{
+                  background: "rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(4px)",
+                  WebkitBackdropFilter: "blur(4px)",
+                  borderRadius: "0.5rem",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  padding: "20px",
+                  color: "white",
                 }}
+                type="submit"
+                variant="outline"
+                onClick={() => SignIn()}
               >
-                {/* <button type="submit">Signin with GitHub</button> */}
-                <Button
-                  style={{
-                    background: "rgba(0, 0, 0, 0.2)",
-                    boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-                    backdropFilter: "blur(4px)",
-                    WebkitBackdropFilter: "blur(4px)",
-                    borderRadius: "0.5rem",
-                    border: "1px solid rgba(255, 255, 255, 0.18)",
-                    padding: "20px",
-                    color: "white",
-                  }}
-                  type="submit"
-                  variant="outline"
-                >
-                  <Icons.gitHub className="mr-2 h-4 w-4" />
-                  Github
-                </Button>
-              </form>
+                <Icons.gitHub className="mr-2 h-4 w-4" />
+                Github
+              </Button>
               <Button
                 style={{
                   background: "rgba(0, 0, 0, 0.2)",
