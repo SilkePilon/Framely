@@ -14,6 +14,7 @@ import {
   Trash2,
   Users2,
   PanelLeftOpen,
+  Plus,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -138,9 +139,9 @@ export function Mail({
                   variant: "default",
                 },
                 {
-                  title: "Drafts",
-                  label: "9",
-                  icon: File,
+                  title: "Create Post",
+                  label: "(raw, image, video)",
+                  icon: Plus,
                   variant: "ghost",
                 },
                 {
@@ -237,7 +238,7 @@ export function Mail({
             <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <form>
                 <div className="relative">
-                  <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input placeholder="Search" className="pl-8" />
                 </div>
               </form>
