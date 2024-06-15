@@ -124,7 +124,9 @@ import {
 import { Inter } from "next/font/google";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-
+// @ts-ignore
+import { ImperativePanelHandle } from "@/components/ui/resizable";
+import { openImage } from "./mail";
 const reviews = [
   {
     name: "Jack",
@@ -252,6 +254,7 @@ export function MailList({ items }: MailListProps) {
                       ) => (i.currentTarget.style.display = "none")}
                       onClick={() => {
                         // setMail(review);
+                        openImage();
                       }}
                     />
                   </HoverCardTrigger>

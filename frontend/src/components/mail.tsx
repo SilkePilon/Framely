@@ -51,6 +51,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import exp from "constants";
 interface MailProps {
   accounts: {
     label: string;
@@ -63,10 +64,63 @@ interface MailProps {
   navCollapsedSize: number;
 }
 
+let leftPanelRef = createRef<ImperativePanelHandle>();
+let rightPanelRef = createRef<ImperativePanelHandle>();
+
+const delayTime = 10; // 1 second delay
+const maxValue = 20;
+const incrementDelay = 20; // 100ms delay between increments
+
+export function openImage() {
+  let number = 0;
+  const currentSize = rightPanelRef.current?.getSize();
+
+  if (currentSize === maxValue) {
+    animateToZero();
+  } else {
+    animateToMaxValue();
+  }
+}
+
+function animateToZero() {
+  let number = maxValue;
+
+  const interval = setInterval(() => {
+    rightPanelRef.current?.resize(number);
+    number--;
+
+    if (number < 0) {
+      clearInterval(interval);
+      animateToMaxValue();
+    }
+  }, incrementDelay);
+}
+
+function animateToMaxValue() {
+  let number = 0;
+
+  // Initial delay
+  setTimeout(() => {
+    const interval = setInterval(() => {
+      rightPanelRef.current?.resize(number);
+      number++;
+
+      if (number > maxValue) {
+        clearInterval(interval);
+      }
+    }, incrementDelay);
+  }, delayTime);
+}
+
+// export function openImage() {
+//   rightPanelRef.current?.resize(40);
+//   rightPanelRef.current?.expand();
+// }
+
 export function Mail({
   accounts,
   mails,
-  defaultLayout = [265, 265, 655],
+  defaultLayout = [10, 10, 10],
   defaultCollapsed = true,
   navCollapsedSize,
 }: MailProps) {
@@ -91,12 +145,12 @@ export function Mail({
   const isMobile = width <= 700;
   let show = isMobile ? false : true;
 
-  let leftPanelRef = createRef<ImperativePanelHandle>();
   useEffect(() => {
     leftPanelRef.current?.collapse();
+    rightPanelRef.current?.collapse();
     setIsCollapsed(true);
     document.cookie = `react-resizable-panels:collapsed=true`;
-  }, [leftPanelRef]);
+  }, []);
 
   // setIsCollapsed(true);
   // document.cookie = `react-resizable-panels:collapsed=true`;
@@ -293,7 +347,11 @@ export function Mail({
         {show ? (
           <>
             <ResizableHandle withHandle />
-            <ResizablePanel defaultSize={defaultLayout[2]}>
+            <ResizablePanel
+              collapsible={true}
+              ref={rightPanelRef}
+              // defaultSize={defaultLayout[2]}
+            >
               <MailDisplay
                 mail={mails.find((item) => item.id === mail.selected) || null}
               />
