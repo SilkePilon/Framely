@@ -22,7 +22,6 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-  ImperativePanelHandle,
 } from "@/components/ui/resizable";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -75,7 +74,7 @@ export function Mail({
   const isMobile = width <= 700;
   let show = isMobile ? false : true;
 
-  let leftPanelRef = createRef<ImperativePanelHandle>();
+  let leftPanelRef = createRef<any>();
 
   return (
     <TooltipProvider delayDuration={0}>
