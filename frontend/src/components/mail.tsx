@@ -31,7 +31,7 @@ import { MailList } from "@/components/mail-list";
 import { Nav } from "@/components/nav";
 import { type Mail } from "@/app/data";
 import { useMail } from "@/app/use-mail";
-
+import { useEffect, useState } from "react";
 interface MailProps {
   accounts: {
     label: string;
@@ -53,6 +53,23 @@ export function Mail({
 }: MailProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
   const [mail] = useMail();
+
+  const [width, setWidth] = useState<number>(0);
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+      window.addEventListener("resize", handleWindowSizeChange);
+      return () => {
+        window.removeEventListener("resize", handleWindowSizeChange);
+      };
+    }
+  }, []);
+
+  const isMobile = width <= 700;
+  let show = isMobile ? false : true;
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -178,7 +195,7 @@ export function Mail({
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
               <h1 className="text-xl font-bold">Trending Images</h1>
-              <TabsList className="ml-auto" style={{ marginLeft: 10 }}>
+              <TabsList className="ml-auto">
                 <TabsTrigger
                   value="all"
                   className="text-zinc-600 dark:text-zinc-200"
@@ -210,12 +227,16 @@ export function Mail({
             </TabsContent>
           </Tabs>
         </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={defaultLayout[2]}>
-          <MailDisplay
-            mail={mails.find((item) => item.id === mail.selected) || null}
-          />
-        </ResizablePanel>
+        {show ? (
+          <>
+            <ResizableHandle withHandle />
+            <ResizablePanel defaultSize={defaultLayout[2]}>
+              <MailDisplay
+                mail={mails.find((item) => item.id === mail.selected) || null}
+              />
+            </ResizablePanel>
+          </>
+        ) : null}
       </ResizablePanelGroup>
     </TooltipProvider>
   );
