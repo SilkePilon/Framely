@@ -113,9 +113,13 @@ export function Mail({
               isCollapsed ? "h-[52px]" : "px-2"
             )}
           >
-            <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
+            <div style={{ marginTop: "15px", marginBottom: "10px" }}>
+              <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
+            </div>
           </div>
-          <Separator />
+          <div style={{ marginTop: "4px", marginBottom: "10px" }}>
+            <Separator />
+          </div>
           {/* <PanelLeftOpen
             onClick={() => {
               leftPanelRef.current?.expand();
@@ -123,48 +127,52 @@ export function Mail({
             className="size-5"
             style={{ marginRight: "0.5rem" }}
           /> */}
-          <Nav
-            isCollapsed={isCollapsed}
-            links={[
-              {
-                title: "Feed",
-                label: "128 new posts",
-                icon: Inbox,
-                variant: "default",
-              },
-              {
-                title: "Drafts",
-                label: "9",
-                icon: File,
-                variant: "ghost",
-              },
-              {
-                title: "Sent",
-                label: "",
-                icon: Send,
-                variant: "ghost",
-              },
-              {
-                title: "Junk",
-                label: "23",
-                icon: ArchiveX,
-                variant: "ghost",
-              },
-              {
-                title: "Trash",
-                label: "",
-                icon: Trash2,
-                variant: "ghost",
-              },
-              {
-                title: "Archive",
-                label: "",
-                icon: Archive,
-                variant: "ghost",
-              },
-            ]}
-          />
-          <Separator />
+          <div style={{ marginTop: "10px" }}>
+            <Nav
+              isCollapsed={isCollapsed}
+              links={[
+                {
+                  title: "Feed",
+                  label: "128 new posts",
+                  icon: Inbox,
+                  variant: "default",
+                },
+                {
+                  title: "Drafts",
+                  label: "9",
+                  icon: File,
+                  variant: "ghost",
+                },
+                {
+                  title: "Sent",
+                  label: "",
+                  icon: Send,
+                  variant: "ghost",
+                },
+                {
+                  title: "Junk",
+                  label: "23",
+                  icon: ArchiveX,
+                  variant: "ghost",
+                },
+                {
+                  title: "Trash",
+                  label: "",
+                  icon: Trash2,
+                  variant: "ghost",
+                },
+                {
+                  title: "Archive",
+                  label: "",
+                  icon: Archive,
+                  variant: "ghost",
+                },
+              ]}
+            />
+          </div>
+          <div style={{ marginTop: "10px", marginBottom: "10px" }}>
+            <Separator />
+          </div>
           <div>
             <Nav
               isCollapsed={isCollapsed}
@@ -207,17 +215,19 @@ export function Mail({
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
-              <h1 className="text-xl font-bold">Trending Images</h1>
-              <TabsList className="ml-auto">
+              <h1 className="text-lg font-bold">Trending Images</h1>
+              <TabsList className="ml-auto" style={{ borderRadius: "0.60rem" }}>
                 <TabsTrigger
                   value="all"
                   className="text-zinc-600 dark:text-zinc-200"
+                  style={{ borderRadius: "0.60rem" }}
                 >
-                  All
+                  Trending
                 </TabsTrigger>
                 <TabsTrigger
                   value="unread"
                   className="text-zinc-600 dark:text-zinc-200"
+                  style={{ borderRadius: "0.60rem" }}
                 >
                   Following
                 </TabsTrigger>
