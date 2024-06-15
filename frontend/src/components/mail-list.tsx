@@ -233,7 +233,7 @@ export function MailList({ items }: MailListProps) {
                       src={review.img}
                       alt={review.username}
                       style={{
-                        borderRadius: "1rem",
+                        borderRadius: "0.60rem",
                         transition: "transform 0.3s ease-in-out",
                         width: "100%",
                         height: "100%",
