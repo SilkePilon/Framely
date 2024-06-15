@@ -141,7 +141,7 @@ export function Mail({
                   title: "Feed",
                   label: "Explore the master feed!",
                   icon: Crop,
-                  variant: "default",
+                  variant: "ghost",
                   href: "/",
                 },
                 {
@@ -160,7 +160,7 @@ export function Mail({
                   title: "Profile",
                   label: "See your work",
                   icon: User,
-                  variant: "ghost",
+                  variant: "default",
                   href: "/profile",
                 },
                 {
@@ -211,8 +211,10 @@ export function Mail({
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
-              <h1 className="text-lg font-bold">Trending Images</h1>
-              <TabsList className="ml-auto" style={{ borderRadius: "0.60rem" }}>
+              <h1 style={{ marginTop: "6px" }} className="text-lg font-bold">
+                Silke Pilon's Profile
+              </h1>
+              {/* <TabsList className="ml-auto" style={{ borderRadius: "0.60rem" }}>
                 <TabsTrigger
                   value="all"
                   className="text-zinc-600 dark:text-zinc-200"
@@ -227,16 +229,18 @@ export function Mail({
                 >
                   Following
                 </TabsTrigger>
-              </TabsList>
+              </TabsList> */}
             </div>
-            <Separator />
+            <div style={{ marginTop: "6px" }}>
+              <Separator />
+            </div>
             <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-              <form>
+              {/* <form>
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search for images" className="pl-8" />
+                  <Input placeholder="" className="pl-8" />
                 </div>
-              </form>
+              </form> */}
             </div>
             <TabsContent value="all" className="m-0">
               <MailList items={mails} />
