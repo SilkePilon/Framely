@@ -15,6 +15,11 @@ import {
   Users2,
   PanelLeftOpen,
   Plus,
+  User,
+  MapPinned,
+  Zap,
+  Github,
+  Crop,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -134,8 +139,8 @@ export function Mail({
               links={[
                 {
                   title: "Feed",
-                  label: "128 new posts",
-                  icon: Inbox,
+                  label: "Explore the master feed!",
+                  icon: Crop,
                   variant: "default",
                 },
                 {
@@ -146,26 +151,26 @@ export function Mail({
                 },
                 {
                   title: "Sent",
-                  label: "",
+                  label: "Chat with friends! (if you have any)",
                   icon: Send,
                   variant: "ghost",
                 },
                 {
-                  title: "Junk",
-                  label: "23",
-                  icon: ArchiveX,
+                  title: "Profile",
+                  label: "See your work",
+                  icon: User,
                   variant: "ghost",
                 },
                 {
-                  title: "Trash",
-                  label: "",
-                  icon: Trash2,
+                  title: "Map",
+                  label: "Explore places!",
+                  icon: MapPinned,
                   variant: "ghost",
                 },
                 {
-                  title: "Archive",
-                  label: "",
-                  icon: Archive,
+                  title: "API",
+                  label: "For developers!",
+                  icon: Zap,
                   variant: "ghost",
                 },
               ]}
@@ -179,33 +184,21 @@ export function Mail({
               isCollapsed={isCollapsed}
               links={[
                 {
-                  title: "Social",
-                  label: "972",
+                  title: "Friends",
+                  label: "17",
                   icon: Users2,
                   variant: "ghost",
                 },
                 {
                   title: "Updates",
-                  label: "342",
+                  label: "What's new?",
                   icon: AlertCircle,
                   variant: "ghost",
                 },
                 {
-                  title: "Forums",
-                  label: "128",
-                  icon: MessagesSquare,
-                  variant: "ghost",
-                },
-                {
-                  title: "Shopping",
-                  label: "8",
-                  icon: ShoppingCart,
-                  variant: "ghost",
-                },
-                {
-                  title: "Promotions",
-                  label: "21",
-                  icon: Archive,
+                  title: "GitHub",
+                  label: "Contribute!",
+                  icon: Github,
                   variant: "ghost",
                 },
               ]}
@@ -239,7 +232,7 @@ export function Mail({
               <form>
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search" className="pl-8" />
+                  <Input placeholder="Search for images" className="pl-8" />
                 </div>
               </form>
             </div>
