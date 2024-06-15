@@ -251,7 +251,7 @@ export function MailList({ items }: MailListProps) {
                         i: React.SyntheticEvent<HTMLImageElement, Event>
                       ) => (i.currentTarget.style.display = "none")}
                       onClick={() => {
-                        setMail(review);
+                        // setMail(review);
                       }}
                     />
                   </HoverCardTrigger>
