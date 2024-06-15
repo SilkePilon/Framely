@@ -20,11 +20,14 @@ import {
   Zap,
   Github,
   Crop,
+  Moon,
+  Sun,
 } from "lucide-react";
-
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import {
+  ImperativePanelHandle,
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
@@ -41,6 +44,12 @@ import { useMail } from "@/app/use-mail";
 import { useEffect, useState } from "react";
 import { createRef } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 interface MailProps {
   accounts: {
     label: string;
@@ -56,12 +65,13 @@ interface MailProps {
 export function Mail({
   accounts,
   mails,
-  defaultLayout = [265, 440, 655],
-  defaultCollapsed = false,
+  defaultLayout = [265, 265, 655],
+  defaultCollapsed = true,
   navCollapsedSize,
 }: MailProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
   const [mail] = useMail();
+  const { setTheme } = useTheme();
 
   const [width, setWidth] = useState<number>(0);
   function handleWindowSizeChange() {
@@ -80,8 +90,15 @@ export function Mail({
   const isMobile = width <= 700;
   let show = isMobile ? false : true;
 
-  let leftPanelRef = createRef<any>();
+  let leftPanelRef = createRef<ImperativePanelHandle>();
+  useEffect(() => {
+    leftPanelRef.current?.collapse();
+    setIsCollapsed(true);
+    document.cookie = `react-resizable-panels:collapsed=true`;
+  }, [leftPanelRef]);
 
+  // setIsCollapsed(true);
+  // document.cookie = `react-resizable-panels:collapsed=true`;
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
@@ -99,6 +116,9 @@ export function Mail({
           collapsible={true}
           minSize={15}
           maxSize={15}
+          onLoad={(panel) => {
+            leftPanelRef.current?.collapse();
+          }}
           onCollapse={() => {
             setIsCollapsed(true);
             document.cookie = `react-resizable-panels:collapsed=true`;
@@ -202,9 +222,32 @@ export function Mail({
                   label: "Contribute!",
                   icon: Github,
                   variant: "ghost",
+                  href: "https://github.com/SilkePilon/Framely",
                 },
               ]}
             />
+            <center className="sticky top-[100vh]">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="secondary" size="icon">
+                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    Dark
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                    System
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </center>
           </div>
         </ResizablePanel>
         <ResizableHandle withHandle />
