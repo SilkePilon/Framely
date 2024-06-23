@@ -242,7 +242,7 @@ export function MailList({ items }: MailListProps) {
 
   return (
     <>
-      <ScrollArea className="h-screen">
+      <ScrollArea className="h-screen" style={{ height: "82vh" }}>
         <div className="z-10" style={{ marginRight: 20, marginLeft: 20 }}>
           <Masonry columnsCount={feedRows} gutter="20px">
             {secondRow.map((review) => (
