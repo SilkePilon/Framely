@@ -321,7 +321,7 @@ export function Mail({
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
-              <h1 className="text-lg font-bold">Trending Images</h1>
+              <h1 className="text-lg font-bold">Trending</h1>
               <TabsList className="ml-auto" style={{ borderRadius: "0.60rem" }}>
                 <TabsTrigger
                   value="all"
@@ -344,7 +344,10 @@ export function Mail({
               <form>
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search for images" className="pl-8" />
+                  <Input
+                    placeholder="Search for images & videos..."
+                    className="pl-8"
+                  />
                 </div>
               </form>
             </div>

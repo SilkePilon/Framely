@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Mail } from "@/app/data";
 import { useMail } from "@/app/use-mail";
 import Masonry from "react-responsive-masonry";
+import ReactPlayer from "react-player";
 import {
   Bird,
   Book,
@@ -124,6 +125,8 @@ import {
 import { Inter } from "next/font/google";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
+import { useRef } from "react";
+
 // @ts-ignore
 import { ImperativePanelHandle } from "@/components/ui/resizable";
 import { openImage } from "./mail";
@@ -197,27 +200,45 @@ interface MailListProps {
   items: Mail[];
 }
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+}
+
 export function MailList({ items }: MailListProps) {
   const [mail, setMail] = useMail();
 
   const [width, setWidth] = useState<number>(0);
 
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
+  const [playing, setPlaying] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setWidth(window.innerWidth);
-      window.addEventListener("resize", handleWindowSizeChange);
-      return () => {
-        window.removeEventListener("resize", handleWindowSizeChange);
-      };
-    }
-  }, []);
+  const size = useWindowSize();
 
-  const isMobile = width <= 768;
+  const isMobile = size.width <= 768;
   let feedRows = isMobile ? 1 : 3;
+  let feedRowsVideo = isMobile ? 1 : 2;
+
+  const [playingVideos, setPlayingVideos] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   return (
     <>
@@ -257,6 +278,117 @@ export function MailList({ items }: MailListProps) {
                         openImage();
                       }}
                     />
+                  </HoverCardTrigger>
+                  <HoverCardContent
+                    style={{
+                      //   borderBottomLeftRadius: "1rem",
+                      //   borderBottomRightRadius: "1rem",
+                      borderRadius: "0.90rem",
+                      textAlign: "center",
+                      alignContent: "center",
+                      width: "20vw",
+                    }}
+                  >
+                    <p>Image Title</p>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      Camara
+                    </Badge>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      ISO
+                    </Badge>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      Secondary
+                    </Badge>
+                    <Badge
+                      style={{ borderRadius: "0.40rem", margin: "2px" }}
+                      variant="secondary"
+                    >
+                      Model
+                    </Badge>
+                  </HoverCardContent>
+                </HoverCard>
+              </>
+            ))}
+          </Masonry>
+          <div style={{ marginTop: 40, marginBottom: 40 }}>
+            <Separator />
+          </div>
+          <Masonry columnsCount={feedRowsVideo} gutter="20px">
+            {secondRow.map((review, index) => (
+              <>
+                {/* <AlertDialog>
+                <AlertDialogTrigger> */}
+                <HoverCard key={index}>
+                  <HoverCardTrigger>
+                    <div
+                      style={{
+                        borderRadius: "0.60rem",
+                        overflow: "hidden",
+                        transition: "transform 0.3s ease-in-out",
+                      }}
+                      onMouseEnter={(e) => {
+                        setPlayingVideos((prev) => ({
+                          ...prev,
+                          [index]: true,
+                        }));
+                        e.currentTarget.style.transform = "scale(1.02)";
+                      }}
+                      onMouseLeave={(e) => {
+                        setPlayingVideos((prev) => ({
+                          ...prev,
+                          [index]: false,
+                        }));
+                        e.currentTarget.style.transform = "scale(1)";
+                      }}
+                      onClick={() => {
+                        // setMail(review);
+                        openImage();
+                      }}
+                    >
+                      <ReactPlayer
+                        url="https://cdn.pixabay.com/video/2017/10/30/12687-241236784_tiny.mp4"
+                        width="100%"
+                        height="100%"
+                        playing={playingVideos[index] || false}
+                      />
+                    </div>
+
+                    {/* <img
+                      key={review.username}
+                      src={review.img}
+                      alt={review.username}
+                      style={{
+                        borderRadius: "0.60rem",
+                        transition: "transform 0.3s ease-in-out",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      className="marginTop-10"
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.transform = "scale(1.02)";
+                        e.currentTarget.style.zIndex = "999";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                        // e.currentTarget.style.zIndex = "1";
+                      }}
+                      onError={(
+                        i: React.SyntheticEvent<HTMLImageElement, Event>
+                      ) => (i.currentTarget.style.display = "none")}
+                      onClick={() => {
+                        // setMail(review);
+                        openImage();
+                      }}
+                    /> */}
                   </HoverCardTrigger>
                   <HoverCardContent
                     style={{

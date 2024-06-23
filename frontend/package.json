@@ -49,6 +49,7 @@
     "react": "^18",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
+    "react-player": "^2.16.0",
     "react-resizable-panels": "^2.0.19",
     "react-responsive-masonry": "^2.2.0",
     "react-router-dom": "^6.23.1",
