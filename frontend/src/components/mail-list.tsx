@@ -351,6 +351,7 @@ export function MailList({ items }: MailListProps) {
                       }}
                       onClick={() => {
                         // setMail(review);
+                        // e.setState({ pip: true }
                         openImage();
                       }}
                     >
@@ -359,6 +360,8 @@ export function MailList({ items }: MailListProps) {
                         width="100%"
                         height="100%"
                         playing={playingVideos[index] || false}
+                        // pip={playingVideos[index] || false}
+                        loop={true}
                       />
                     </div>
 
